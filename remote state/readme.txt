@@ -35,4 +35,16 @@ Backend config (you can not use variables in backend since it is the initializat
 ** if you want to provide values during the fly you can use "-backend-config " flag with the key-value pair : ex : terraform init -backend-config="sas_token=njkhdsajhdhsajdsajdhsah12jh3j21312"
 
 
+1. create a backend.tf file as :
+terraform {
+  backend "azurerm" {
+  }
+}
+2. go to your working directory where you have your tfstate files and create the backend.tf file there
+3. Copy the backend-config.txt file which you configured during the remote state storage account setup on azure.
+4. in your working direactory having terraform.tfstate, backend.tf & backend-config.txt file run terraform init with either hardcoded values in your backend.tf file or better pass on the fly using "-backend-config" flag as below:
 
+	" terraform init -backend-config=backend-config.txt "
+	Confirm by saying Yes
+
+Now remote State file will be used
